@@ -1,59 +1,87 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RetroClip Studio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              retro: {
-                bg: '#121212', // Very dark charcoal
-                paper: '#F5F5F0', // Cream off-white
-                teal: '#2A9D8F',
-                mustard: '#E9C46A',
-                magenta: '#D62828',
-                orange: '#F4A261',
-                charcoal: '#264653'
-              }
-            },
-            fontFamily: {
-              sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
-            },
-            backgroundImage: {
-              'noise': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxmaWx0ZXIgaWQ9J25vaXNlJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC42NScgbnVtT2N0YXZlcz0nMScgc3RpdGNoVGlsZXM9J3N0aXRjaCcgLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWxsPSd0cmFuc3BhcmVudCcgLz48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWxsPScjZmZmZmZmJyBvcGFjaXR5PScwLjA1JyBmaWx0ZXI9J3VybCgjbm9pc2UpJyAvPjwvc3ZnPg==')",
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RetroClip Studio - Penggabung Video & Generator TTS Otomatis</title>
+  <meta name="description"
+    content="Gabungkan video clip, tambahkan narasi (TTS) otomatis dengan suara AI natural, dan buat konten video pendek yang menarik secara instan dengan RetroClip Studio." />
+  <meta name="keywords"
+    content="video editor, text to speech, video joiner, content creator, tts generator, retro style, video maker, penggabung video, buat video otomatis, AI voiceover" />
+  <meta name="author" content="RetroClip Studio" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://harimayco.github.io/merge-video-ai/" />
+  <meta property="og:title" content="RetroClip Studio - Buat Video Narasi Instan" />
+  <meta property="og:description"
+    content="Gabungkan video dan tambahkan narasi suara AI natural dalam hitungan detik. Tool wajib untuk content creator." />
+  <meta property="og:image" content="https://harimayco.github.io/merge-video-ai/og-image.jpeg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://harimayco.github.io/merge-video-ai/" />
+  <meta property="twitter:title" content="RetroClip Studio - Penggabung Video & TTS" />
+  <meta property="twitter:description"
+    content="Gabungkan video dan tambahkan narasi suara AI natural dalam hitungan detik. Tool wajib untuk content creator." />
+  <meta property="twitter:image" content="https://harimayco.github.io/merge-video-ai/og-image.jpeg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            retro: {
+              bg: '#121212', // Very dark charcoal
+              paper: '#F5F5F0', // Cream off-white
+              teal: '#2A9D8F',
+              mustard: '#E9C46A',
+              magenta: '#D62828',
+              orange: '#F4A261',
+              charcoal: '#264653'
             }
+          },
+          fontFamily: {
+            sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+          },
+          backgroundImage: {
+            'noise': "url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScxMDAlJyBoZWlnaHQ9JzEwMCUnPjxmaWx0ZXIgaWQ9J25vaXNlJz48ZmVUdXJidWxlbmNlIHR5cGU9J2ZyYWN0YWxOb2lzZScgYmFzZUZyZXF1ZW5jeT0nMC42NScgbnVtT2N0YXZlcz0nMScgc3RpdGNoVGlsZXM9J3N0aXRjaCcgLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWxsPSd0cmFuc3BhcmVudCcgLz48cmVjdCB3aWR0aD0nMTAwJScgaGVpZ2h0PScxMDAlJyBmaWxsPScjZmZmZmZmJyBvcGFjaXR5PScwLjA1JyBmaWx0ZXI9J3VybCgjbm9pc2UpJyAvPjwvc3ZnPg==')",
           }
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #121212;
-        color: #F5F5F0;
-      }
-      /* Custom scrollbar for retro feel */
-      ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #1a1a1a;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #E9C46A;
-        border: 2px solid #1a1a1a;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #2A9D8F;
-      }
-    </style>
+    }
+  </script>
+  <style>
+    body {
+      background-color: #121212;
+      color: #F5F5F0;
+    }
 
-<link rel="stylesheet" href="/index.css">
+    /* Custom scrollbar for retro feel */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #E9C46A;
+      border: 2px solid #1a1a1a;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2A9D8F;
+    }
+  </style>
+
+  <link rel="stylesheet" href="/index.css">
   <script type="importmap">
 {
   "imports": {
@@ -65,9 +93,11 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/merge-video-ai/assets/index-DyQcKEAe.js"></script>
+  <script type="module" crossorigin src="/merge-video-ai/assets/index-B1-NcBko.js"></script>
 </head>
-  <body class="antialiased min-h-screen font-sans selection:bg-retro-magenta selection:text-white overflow-x-hidden">
-    <div id="root"></div>
+
+<body class="antialiased min-h-screen font-sans selection:bg-retro-magenta selection:text-white overflow-x-hidden">
+  <div id="root"></div>
 </body>
+
 </html>
